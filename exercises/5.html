@@ -6,7 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Screen Readers</title>
     <link rel="stylesheet" href="../css/style.css" />
-    <style></style>
+    <style>
+      .main.light_theme {
+        background-color: white;
+        color: black;
+      }
+      .main.dark_theme {
+        background-color: black;
+        color: white;
+      }
+
+      /*Good option when toggling isn't necessary*/
+      /* @media (prefers-color-scheme: dark) {
+        .main {
+          background-color: black;
+          color: white;
+        }
+      } */
+    </style>
   </head>
   <body class="main">
     <header>
@@ -26,5 +43,21 @@
         <input id="input" type="checkbox" />
       </label>
     </div>
+    <script>
+      const input = document.getElementById("input");
+      const wrapper = document.getElementsByClassName("main")[0];
+
+      if (window.matchMedia("prefers-color-scheme:dark").matches) {
+        input.checked = true;
+        wrapper.classList.add("dark_theme");
+      } else {
+        wrapper.classList.add("light_theme");
+      }
+
+      input.addEventListener("change", () => {
+        wrapper.classList.toggle("dark_theme");
+        wrapper.classList.toggle("light_theme");
+      });
+    </script>
   </body>
 </html>

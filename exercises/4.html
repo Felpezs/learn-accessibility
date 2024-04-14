@@ -37,12 +37,25 @@
       </ul>
     </header>
     <div id="container">
+      <div class="skip_main_content">
+        <a href="#button" tabindex="1">Skip to main content</a>
+      </div>
       <h1>Exercise 4</h1>
       <p>
         Let's make a skip link so that user's tabbing through can skip right
         over the navigation and get to this main content!
       </p>
-      <button>Skip to here!</button>
+      <button id="button">Skip to here!</button>
     </div>
+    <script>
+      const container = document.getElementsByClassName("skip_main_content")[0];
+      const skip_el = document.querySelector(".skip_main_content a");
+      const toggle = () => {
+        container.classList.toggle("show");
+      };
+
+      skip_el.addEventListener("focus", toggle);
+      skip_el.addEventListener("focusout", toggle);
+    </script>
   </body>
 </html>
